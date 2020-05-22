@@ -1,1 +1,2 @@
 # Genetic-Algorithm
+I used this algorithm just to compare the results with Simulated Annealing results - [link to Simulated Annealing!](https://github.com/FawazQutami/Travelling-Salesman-Problem-Simulated-Annealing)
