@@ -1,3 +1,6 @@
+------------
+Source: "https://antoinevastel.com/algorithme/python/algorithmes%20g%C3%A9n%C3%A9tiques/2016/04/30/probleme-voyageur-commerce.html"
+------------
 import math
 import random
 import numpy as np
