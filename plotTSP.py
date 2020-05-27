@@ -9,23 +9,21 @@ def plot_learning(fitness_list):
     :param fitness_list: list[float]
     :return: plot
     """
+    fig = plt.figure(figsize=(8, 5), constrained_layout=True)
+    plt.title("Learning Rate", color='b')
     plt.plot([i for i in range(len(fitness_list))], fitness_list)
-    plt.ylabel("Fitness - Distance")
-    plt.xlabel("Iteration")
+    plt.ylabel("Fitness - Distance", c='r')
+    plt.xlabel("Iteration", c='r')
     plt.show()
 
 
-def plotSA(cityName, latitude, longitude, country, fitness_list):
+def plotSA(cityName, latitude, longitude, country):
     """"""
 
     try:
         fig = plt.figure(figsize=(10, 5), constrained_layout=True)
 
-        ax1, ax2 = fig.subplots(1,2)
         fig.suptitle(country + ' Journey')
-
-        # use width and height instead of
-        # (llcrnrlon=50.5, llcrnrlat=24.5, urcrnrlon=52.5, urcrnrlat=26.5,)
 
         if country == "Qatar":
             map = Basemap(width=250000
@@ -48,8 +46,6 @@ def plotSA(cityName, latitude, longitude, country, fitness_list):
         map.fillcontinents(color = '#FFE4B5', lake_color = 'aqua')
         map.drawcoastlines()
         map.drawcountries()
-        #map.drawparallels(np.arange(-40, 61., 2.))
-        #map.drawmeridians(np.arange(-20., 21., 2.))
 
         x, y = map(longitude, latitude)
         map.plot(x, y, 'bo', markersize=10)
@@ -63,14 +59,7 @@ def plotSA(cityName, latitude, longitude, country, fitness_list):
                  , color='r'
                  , markerfacecolor='b')
 
-        #ax1.set_title("Learning Rate")
-        plt.setp(ax1.set_title("Distance"), color='b')
-        ax1.plot([i for i in range(len(fitness_list))], fitness_list)
-        ax1.set_ylabel("Fitness - Distance")
-        ax1.yaxis.label.set_color('red')
-        ax1.set_xlabel("Iteration")
-        ax1.xaxis.label.set_color('red')
-
         plt.show()
+
     except:
         EH()
