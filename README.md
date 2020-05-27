@@ -3,7 +3,6 @@
 
 # Genetic Algorithm
 I used this algorithm to compare the results with [Simulated Annealing!](https://github.com/FawazQutami/Travelling-Salesman-Problem-Simulated-Annealing) results.
-[link to Simulated Annealing!](https://github.com/FawazQutami/Travelling-Salesman-Problem-Simulated-Annealing)
 
 # Code written in Python
 This code is meant to be used as either a research tool or a study guide for anyone interested in learning about Genetic Algorithm.
