@@ -2,14 +2,15 @@ import argparse
 import numpy as np
 import datetime as dt
 
-from GAAlgorithm import GeneticAlgorithm as GA\
-    , Population\
-    , TripManager\
+from GAAlgorithm import GeneticAlgorithm as GA \
+    , Population \
+    , TripManager \
     , Node
 
 from eHandler import PrintException as EH
-from plotTSP import plotSA
+from plotTSP import plotSA, plot_learning
 from setup import install_required_Packages
+
 
 def coordinatesFile(fileName):
     """
@@ -24,8 +25,8 @@ def coordinatesFile(fileName):
             for line in f.readlines():
                 line = [float(x.strip()) for x in line.split(" ")]
                 cty = Node(int(line[0])
-                        ,float(line[1])
-                        ,float(line[2]))
+                           , float(line[1])
+                           , float(line[2]))
                 _journey.addNode(cty)
 
         return _journey
@@ -43,13 +44,13 @@ def runGenetic(Nodes):
         print("Initial Distance: " + str(initialPopulation.getFittest().getDistance()))
 
         ga = GA(Nodes
-                ,mutationRate=0.01
-                ,tournamentSize=25
-                ,eliteSize=True)
+                , mutationRate=0.05
+                , tournamentSize=15
+                , eliteSize=True)
 
         fitnessResults = []
         nextGeneration = ga.matingPool(initialPopulation)
-        for i in range(0, 5000):
+        for i in range(0, 1000):
             nextGeneration = ga.matingPool(nextGeneration)
             fitnessResults.append(nextGeneration.getFittest().getDistance())
 
@@ -61,9 +62,9 @@ def runGenetic(Nodes):
 
         # Extract the best population trip
         bestPopulation = nextGeneration.getFittest()
-        #print(bestPopulation)
+        # print(bestPopulation)
         fitness = fitnessResults
-        #print(fitness)
+        # print(fitness)
 
         return bestPopulation, fitness
 
@@ -90,7 +91,7 @@ def main():
                             # list of option strings
                             choices=fileList,  # choices - A container of the allowable
                             # values for the argument.
-                            default=fileList[choice-1],  # default - The value produced if the
+                            default=fileList[choice - 1],  # default - The value produced if the
                             # argument is absent from the command line.
                             help='A string represents a dataset'  # help - A brief
                             # description of what the argument does.
@@ -109,20 +110,22 @@ def main():
 
         # Prepare the data for plotting the trip
         for city in solutionObj.trip:
-            #print(city.latitude)
+            # print(city.latitude)
             cityName.append(city.cityName)
-            latitude.append(city.latitude/1000)
-            longitude.append(city.longitude/1000)
+            latitude.append(city.latitude / 1000)
+            longitude.append(city.longitude / 1000)
         cityName.append(cityName[0])
         latitude.append(latitude[0])
         longitude.append(longitude[0])
-        #print(longitude)
+        # print(longitude)
 
         # Visualize
         if choice == 1:
-           plotSA(cityName, latitude, longitude, "Djibouti", fitnessObj)
+            plotSA(cityName, latitude, longitude, "Djibouti")
         else:
-           plotSA(cityName, latitude, longitude, "Qatar", fitnessObj)
+            plotSA(cityName, latitude, longitude, "Qatar")
+
+        plot_learning(fitnessObj)
     except:
         EH()
 
@@ -133,5 +136,5 @@ if __name__ == "__main__":
         install_required_Packages()
         main()
 
-    except :
+    except:
         EH()
