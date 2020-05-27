@@ -27,7 +27,9 @@ def install_required_Packages():
         required_packages = [
             'basemap',
             'matplotlib',
-            'numpy'
+            'numpy',
+            'pandas',
+
         ]
 
         # Check and retrieve the installed packages info
