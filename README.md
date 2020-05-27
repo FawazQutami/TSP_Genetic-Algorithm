@@ -2,7 +2,7 @@
 “Given a list of cities and the distances between each pair of cities, what is the shortest possible route that visits each city and returns to the origin city?”
 
 # Genetic Algorithm
-I used this algorithm to compare the results with Simulated Annealing results 
+I used this algorithm to compare the results with [Simulated Annealing!](https://github.com/FawazQutami/Travelling-Salesman-Problem-Simulated-Annealing) results.
 [link to Simulated Annealing!](https://github.com/FawazQutami/Travelling-Salesman-Problem-Simulated-Annealing)
 
 # Code written in Python
