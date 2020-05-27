@@ -29,7 +29,6 @@ def install_required_Packages():
             'matplotlib',
             'numpy',
             'pandas',
-
         ]
 
         # Check and retrieve the installed packages info
